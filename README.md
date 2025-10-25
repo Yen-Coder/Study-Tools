@@ -43,7 +43,21 @@ sudo dnf install ghostscript
 ```
 
 Windows:
-Download and install from [Ghostscript official website](https://www.ghostscript.com/download/gsdnload.html)
+1. Download the Windows installer from [Ghostscript official website](https://www.ghostscript.com/download/gsdnload.html)
+2. Run the installer and follow the installation wizard
+3. Make sure to check "Add to PATH" during installation
+4. Verify installation by opening Command Prompt and running:
+   ```cmd
+   gswin64c -version
+   ```
+   or
+   ```cmd
+   gswin32c -version
+   ```
+
+**Note for Windows users:** If Ghostscript is not in your PATH, you may need to add it manually:
+- Default installation path: `C:\Program Files\gs\gs[version]\bin`
+- Add this path to your System Environment Variables
 
 ### Clone the Repository
 
@@ -81,13 +95,37 @@ Options:
 **Examples:**
 
 Compress a single PDF to under 30 MB:
+
+Linux/macOS:
 ```bash
 python3 pdf_reducer.py large_document.pdf compressed_document.pdf
 ```
 
+Windows (Command Prompt):
+```cmd
+python pdf_reducer.py large_document.pdf compressed_document.pdf
+```
+
+Windows (PowerShell):
+```powershell
+python pdf_reducer.py large_document.pdf compressed_document.pdf
+```
+
 Compress all PDFs in a directory:
+
+Linux/macOS:
 ```bash
 python3 batch-reduce.py ~/Documents/PDFs --output ~/Documents/Compressed_PDFs --target 25
+```
+
+Windows (Command Prompt):
+```cmd
+python batch-reduce.py C:\Users\YourName\Documents\PDFs --output C:\Users\YourName\Documents\Compressed_PDFs --target 25
+```
+
+Windows (PowerShell):
+```powershell
+python batch-reduce.py C:\Users\$env:USERNAME\Documents\PDFs --output C:\Users\$env:USERNAME\Documents\Compressed_PDFs --target 25
 ```
 
 ## Project Structure
